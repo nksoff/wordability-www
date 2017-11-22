@@ -84,7 +84,7 @@ def word_by_id(w):
 
     skins = ['fuzzy-hue', 'fuzzy-saturation', 'ring-pink', 'ring-green']
     skin = skins[random.randint(0, len(skins) - 1)]
-    return render_template('word.html', word=vocabulary[w], skin=skin)
+    return render_template('word.html', word=inv_vocabulary[w], skin=skin)
 
 
 if __name__ == '__main__':
