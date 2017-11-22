@@ -36,9 +36,9 @@
         <div class="row">
             <div class="flow-text social huge center">
                 {% for w in words %}
-                    <a href="/word/{{ word.id }}" class="col s6 m4 l3 waves-effect waves-light {{ loop.cycle('github', 'facebook', 'googleplus', 'linkedin', 'vk', 'pinterest', 'twitter', 'dribbble') }}">
+                    <a href="/word/{{ w.id }}" class="col s6 m4 l3 waves-effect waves-light {{ loop.cycle('github', 'facebook', 'googleplus', 'linkedin', 'vk', 'pinterest', 'twitter', 'dribbble') }}">
                     <div class="rectangle">
-                        <div class="content valign-wrapper">{{ w.name }}</div>
+                        <div class="content valign-wrapper">{{ w.name }} <small>{{ w.percent }}%</small></div>
                     </div>
                 </a>
                 {% endfor %}
