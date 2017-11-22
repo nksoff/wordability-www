@@ -87,6 +87,9 @@ def word_by_id(w):
 
     words = []
     for i in range(0, 21):
+        if nn_result[i][0] == w:
+            continue
+
         words.append({
             'id': nn_result[i][0],
             'percent': '%.2f' % (nn_result[i][1] * 100),
