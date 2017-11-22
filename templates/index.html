@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link rel="stylesheet" href="/static/css/build.min.css?v=1.7">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="shortcut icon" href="/static/favicon.ico">
+    <title>Анализ новостей российских СМИ</title>
+</head>
+<body class="fuzzy-{{ skin }}-skin">
+<div id="progress" class="progress">
+    <div class="indeterminate"></div>
+</div>
+<div class="spinner-container valign-wrapper">
+    <div class="spinner-double-wave-in"></div>
+</div>
+
+<header class="navbar-fixed">
+    <nav>
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="/" class="brand-logo">word2vec</a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<section id="hero" class="hero full-height valign-wrapper scrollspy">
+    <h1 class="center">Анализ новостей российских СМИ</h1>
+</section>
+<h3 class="margin-top">Что сделано?</h3>
+<section id="about" class="about scrollspy">
+    <div class="row philosophy big-icons-row grey lighten-4">
+        <div class="col s12">
+            <ul class="tabs">
+                <li class="tab col s4 m3 l2">
+                    <a href="#philosophy-1">
+                        <i class="icon-basic-magnifier"></i>
+                        <h5>Датасет</h5>
+                    </a>
+                </li>
+                <li class="tab col s4 m3 l2">
+                    <a href="#philosophy-2">
+                        <i class="icon-ecommerce-graph-increase"></i>
+                        <h5>Чистка</h5>
+                    </a>
+                </li>
+                <li class="tab col s4 m3 l2">
+                    <a href="#philosophy-3">
+                        <i class="icon-ecommerce-graph3"></i>
+                        <h5>Анализ</h5>
+                    </a>
+                </li>
+                <li class="tab col s4 m3 l2">
+                    <a href="#philosophy-4">
+                        <i class="icon-basic-pencil-ruler"></i>
+                        <h5>Обучение</h5>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="tab-contents">
+            <div id="philosophy-1" class="col s12 l8 offset-l2">
+                <h5>Датасет</h5>
+                <p class="flow-text center margin-top-more">Используется <a
+                        href="https://github.com/maxoodf/russian_news_corpus">Корпус лемматизированных текстов
+                    российских СМИ</a>. 4.3Гб текстов, 360 млн слов, 5 млн уникальных слов.</p>
+            </div>
+            <div id="philosophy-2" class="col s12 l8 offset-l2">
+                <h5>Чистка</h5>
+                <p class="flow-text center margin-top-more">Убираются служебные части речи, вводные слова. Удаляются
+                    знаки препинания, цифры. Между словами сохраняется ровно один пробел.</p>
+            </div>
+            <div id="philosophy-3" class="col s12 l8 offset-l2">
+                <h5>Анализ</h5>
+                <p class="flow-text center margin-top-more">Выбирается 10 тысяч самых часто используемых слов,
+                    нумеруются по порядку с 1 (индексы). Слова в исходном датасете заменяются на индексы;
+                    незанумерованные слова заменяются нулями. Формируются примеры входных пар слов и размечаются
+                    единицами, если слова попадают в окно из 3 слов друг от друга, или нулями в противном случае.</p>
+            </div>
+            <div id="philosophy-4" class="col s12 l8 offset-l2">
+                <h5>Обучение</h5>
+                <p class="flow-text center margin-top-more">На вход нейронной сети подаются пары слов (их индексы). <br>
+                    На выходе - скалярное произведение векторов, получаемых из индексов. В идеале выход равен разметке
+                    (0 или 1, в зависимости от контекстной близости слов).</p>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="services" class="blog scrollspy">
+    <div class="container">
+        <h2><span>Попробовать</span></h2>
+        <h3>Выберите слово и найдите его контекстных "соседей"</h3>
+        <div class="row">
+            <div class="flow-text social huge center">
+                {% for word in words %}
+                    <a href="/word/{{ word.id }}" class="col s6 m4 l3 waves-effect waves-light {{ loop.cycle('github', 'facebook', 'googleplus', 'linkedin', 'vk', 'pinterest', 'twitter', 'dribbble') }}">
+                    <div class="rectangle">
+                        <div class="content valign-wrapper">{{ word.name }}</div>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="page-footer">
+    <div class="footer-copyright">
+        <div class="container">&copy; 2017 Слимов Никита</div>
+    </div>
+</footer>
+<script src="/static/js/jquery-2.1.1.min.js"></script>
+<script src="/static/js/materialize.min.js"></script>
+<script src="/static/js/app.js?v=1.0"></script>
+<script src="/static/js/skins/min/fuzzy-{{ skin }}.min.js"></script>
+</body>
+</html>
