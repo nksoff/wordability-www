@@ -65,21 +65,17 @@ inv_vocabulary = invert_vocabulary(vocabulary)
 
 @app.route('/')
 def index():
-    words = [
-        {'id': 1, 'name': 'путин'},
-        {'id': 2, 'name': 'москва'},
-        {'id': 3, 'name': 'россия'},
-        {'id': 4, 'name': 'порошенко'},
-        {'id': 5, 'name': 'сша'},
-        {'id': 6, 'name': 'язь'},
-        {'id': 7, 'name': 'лес'},
-        {'id': 8, 'name': 'голова'},
-    ]
+    words = []
+
+    for i in range(1, 100):
+        words.append({'id': i, 'name': inv_vocabulary[i]})
+
+    random.shuffle(words)
 
     skins = ['hue', 'saturation']
     skin = skins[random.randint(0, len(skins) - 1)]
 
-    return render_template('index.html', words=words, skin=skin)
+    return render_template('index.html', words=words[:8], skin=skin)
 
 
 @app.route('/word/<int:w>')
