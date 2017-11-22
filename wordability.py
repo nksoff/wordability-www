@@ -86,7 +86,7 @@ def word_by_id(w):
     nn_result = get_nn_result(model, vocabulary, w)
 
     words = []
-    for i in range(0, 21):
+    for i in range(0, 50):
         if nn_result[i][0] == w:
             continue
 
