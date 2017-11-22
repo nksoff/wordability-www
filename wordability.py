@@ -77,7 +77,7 @@ def index():
     ]
 
     skins = ['hue', 'saturation']
-    skin = skins[random.randint(0, len(skins))]
+    skin = skins[random.randint(0, len(skins) - 1)]
 
     return render_template('index.html', words=words, skin=skin)
 
@@ -87,10 +87,9 @@ def word_by_id(w):
     if w >= len(vocabulary):
         return redirect('/')
 
-    skins = ['combustion-purple', 'combustion-yellow', 'fuzzy-hue', 'fuzzy-saturation', 'ring-pink', 'ring-green',
-             'tunnel', 'waves-deep-purple', 'waves-light-blue']
-    skin = skins[random.randint(0, len(skins))]
-    return render_template('word.html', word=inv_vocabulary[w], skin=skin)
+    skins = ['fuzzy-hue', 'fuzzy-saturation', 'ring-pink', 'ring-green']
+    skin = skins[random.randint(0, len(skins) - 1)]
+    return render_template('word.html', word='путин', skin=skin)
 
 
 if __name__ == '__main__':
