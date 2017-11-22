@@ -72,7 +72,7 @@ def index():
     skins = ['hue', 'saturation']
     skin = skins[random.randint(0, len(skins) - 1)]
 
-    return render_template('index.html', words=words[:8], skin=skin)
+    return render_template('index.html', words=words[:21], skin=skin)
 
 
 @app.route('/word/<int:w>')
