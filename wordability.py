@@ -23,7 +23,6 @@ def read_vocabulary(vocabulary_file):
     for line in file_by_line(vocabulary_file, errors='ignore'):
         line_parts = line.strip().split()
 
-        print(line_parts)
         if len(line_parts) != 3:
             continue
 
